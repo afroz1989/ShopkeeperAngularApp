@@ -4,7 +4,50 @@ html {
 }
 body {
     background:#E2E4E6 !important;
-    padding-top:4em;
     font-family: "Arial";
     min-height: 100%;
+}
+.error {
+    text-align: center;
+}
+
+a {
+    color:#3B8598 !important;
+    font-weight: bold;
+}
+
+#goback {
+    display: block;
+    font-weight:bold;
+    text-transform:uppercase;
+    font-size:.8em;
+    color:#3B8598;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#goback span {
+    font-size:1em;
+}
+
+.basic-btn {
+    background: #3B8598;
+    color:white;
+}
+
+button:disabled {
+    cursor:not-allowed;
+    background: #dddddd !important;
+}
+
+input.txt {
+    background: #ffffff !important;
+    padding:0.6em 1.2em;
+    font-size: 1.3em;
+    border: 1px solid #bbbbbb;
+    margin-bottom: 20px;
+}
+
+input.invalid {
+    border: 1px solid red !important;
 }

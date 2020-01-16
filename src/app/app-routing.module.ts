@@ -9,7 +9,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'singup', component: SignupComponent},
+  {path: 'signup', component: SignupComponent},
   {path: 'email-login', component: EmailLoginComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: '**', redirectTo: 'login'}

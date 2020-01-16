@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth'
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
+import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
+
+// custom user interface
+interface User {
+  uid: string;
+  email: string;
+  displayName: string;
+}
 
 @Component({
   selector: 'app-login',
@@ -10,32 +18,40 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  error:String;
-  constructor(public fbAuth: AngularFireAuth, private router: Router) { 
+  error: string;
+  constructor(public fbAuth: AngularFireAuth, private router: Router, private fs: AngularFirestore) {
       this.fbAuth.authState.subscribe(auth => {
-        if(auth) {
+        if (auth) {
           console.log('Status', auth);
           this.router.navigateByUrl('/dashboard');
         }
-      })
+      });
    }
 
   ngOnInit() {
   }
 
   googleLogin() {
-    let provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('profile');
     provider.addScope('email');
     this.fbAuth.auth.signInWithPopup(provider)
-    .then(res => {
+    .then(user => {
       console.log('Login success');
-      this.router.navigateByUrl('/dashboard');
+      const userRef: AngularFirestoreDocument<User> = this.fs.doc(`users/${user.user.uid}`);
+      const data: User = {
+        uid: user.user.uid,
+        email: user.user.email || null,
+        displayName: user.user.displayName
+      };
+      userRef.set(data).then(user => {
+        this.router.navigateByUrl('/dashboard');
+      });
     })
     .catch(err => {
       console.error('Error ', err);
       this.error = err.message;
-    })
+    });
   }
 
 }

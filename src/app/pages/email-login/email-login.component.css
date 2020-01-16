@@ -1,5 +1,44 @@
+/* with modern browsers */
+.login-form-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.login-form-inner-container {
+    background: #ffffff;
+    padding: 50px;
+    text-align: center;
+    width: 400px;
+}
 #lock {
-    width:21%;
-    margin: 0.5em auto 4em auto;
-    display:block;
+    text-align: center;
+    display: block;
+}
+
+#google {
+    background: #fff  url('src/assets/images/google.svg') no-repeat 25px;
+    background-size: 25px;
+    border: 1px solid #95989A;
+    padding: 1em;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#email {
+    background: #fff  url('src/assets/images/email.svg') no-repeat 25px;
+    background-size: 25px;
+    border: 1px solid #95989A;
+    padding: 1em;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.app-title {
+    
+}
+
+@media screen and (max-width: 600px) {
 }
