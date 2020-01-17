@@ -13,6 +13,13 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { EmailLoginComponent } from './pages/email-login/email-login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { NavbarComponent } from './pages/navbar/navbar.component';
+import { IntroComponent } from './pages/intro/intro.component';
+import { AboutusComponent } from './pages/aboutus/aboutus.component';
+import { FooterComponent } from './pages/footer/footer.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/guards/auth.guard';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +27,12 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     LoginComponent,
     SignupComponent,
     EmailLoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    NavbarComponent,
+    IntroComponent,
+    AboutusComponent,
+    FooterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +44,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

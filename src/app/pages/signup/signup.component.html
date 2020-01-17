@@ -4,26 +4,29 @@
         <h1>Create Account</h1>
         <div class="error alert alert-danger" *ngIf="error">{{error}}</div>
         <form [formGroup]="signupForm" (ngSubmit)="createAccount()">
-            <input [ngClass]="{'invalid': submitted && formValue.email.errors}" formControlName="email"
-                placeholder="Email" type="text" class="txt" />
-            <div *ngIf="submitted && formValue.email.errors" class="alert alert-danger">
-                <div *ngIf="formValue.email.errors.required">Email is required</div>
-                <div *ngIf="formValue.email.errors.email">Invalid email address</div>
+            <div class="form-group">
+                <input [ngClass]="{'invalid': submitted && formValue.email.errors}" formControlName="email"
+                    placeholder="Email" type="text" class="form-control" />
+                <div *ngIf="submitted && formValue.email.errors" class="input-feedback">
+                    <div *ngIf="formValue.email.errors.required">Email is required</div>
+                    <div *ngIf="formValue.email.errors.email">Invalid email address</div>
+                </div>
             </div>
-
-            <input [ngClass]="{'invalid': submitted && formValue.name.errors}" formControlName="name"
-                placeholder="Your name" type="text" class="txt" />
-            <div *ngIf="submitted && formValue.name.errors" class="alert alert-danger">
-                <div *ngIf="formValue.name.errors.required">Name is required</div>
+            <div class="form-group">
+                <input [ngClass]="{'invalid': submitted && formValue.name.errors}" formControlName="name"
+                    placeholder="Your name" type="text" class="form-control" />
+                <div *ngIf="submitted && formValue.name.errors" class="input-feedback">
+                    <div *ngIf="formValue.name.errors.required">Name is required</div>
+                </div>
             </div>
-
-
-            <input [ngClass]="{'invalid': submitted && formValue.password.errors}" formControlName="password"
-                placeholder="Password" type="password" class="txt" />
-            <div *ngIf="submitted && formValue.password.errors" class="alert alert-danger">
-                <div *ngIf="formValue.password.errors.required">Password is required</div>
+            <div class="form-group">
+                <input [ngClass]="{'invalid': submitted && formValue.password.errors}" formControlName="password"
+                    placeholder="Password" type="password" class="form-control" />
+                <div *ngIf="submitted && formValue.password.errors" class="input-feedback">
+                    <div *ngIf="formValue.password.errors.required">Password is required</div>
+                </div>
             </div>
-            <button type="submit" class="basic-btn">Create Account</button>
+            <button type="submit" class="primary-button">Create Account</button>
         </form>
     </div>
 </div>

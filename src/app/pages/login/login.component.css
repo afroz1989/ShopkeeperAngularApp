@@ -1,10 +1,9 @@
 /* with modern browsers */
 .login-form-container {
     display: flex;
-    width: 100vw;
-    height: 100vh;
     justify-content: center;
     align-items: center;
+    padding-top: 120px;
 }
 .login-form-inner-container {
     background: #ffffff;
@@ -20,17 +19,20 @@
 #google {
     background: #fff  url('src/assets/images/google.svg') no-repeat 25px;
     background-size: 25px;
-    border: 1px solid #95989A;
+    border: 1px solid #007bff;
     padding: 1em;
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
 }
+button:hover {
+    box-shadow: 0px 0px 10px 0px #007bff;
+}
 
 #email {
     background: #fff  url('src/assets/images/email.svg') no-repeat 25px;
     background-size: 25px;
-    border: 1px solid #95989A;
+    border: 1px solid #007bff;
     padding: 1em;
     width: 100%;
     margin-top: 10px;

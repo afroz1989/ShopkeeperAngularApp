@@ -1,0 +1,7 @@
+.carousel-indicators {
+    bottom: -54px;
+}
+
+.carousel-indicators li {
+    background-color: #004289;
+}

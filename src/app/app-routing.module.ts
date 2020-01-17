@@ -4,6 +4,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { EmailLoginComponent } from './pages/email-login/email-login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AuthGuard } from './services/guards/auth.guard';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 const routes: Routes = [
@@ -12,6 +14,7 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'email-login', component: EmailLoginComponent},
   {path: 'dashboard', component: DashboardComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: 'login'}
 ];
 

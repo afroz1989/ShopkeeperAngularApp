@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-email-login',
@@ -13,7 +14,7 @@ export class EmailLoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   error: string;
-  constructor(private formBuilder: FormBuilder, private router: Router, private fireAuth: AngularFireAuth) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -32,7 +33,7 @@ export class EmailLoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.fireAuth.auth.signInWithEmailAndPassword(this.formValue.email.value, this.formValue.password.value)
+    this.authService.signInWithEmail(this.formValue.email.value, this.formValue.password.value)
       .then(success => {
         console.log('Login success');
         this.router.navigateByUrl('/dashboard');
