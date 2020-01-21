@@ -1,7 +1,32 @@
 <div class="body-container">
     <div class="login-form-container">
-        <div class="login-form-inner-container">    
-            <p>profile works!</p>
-            </div>
-            </div>
+        <div class="login-form-inner-container">
+            <h1>My Profile</h1>
+            <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+                <div class="form-group">
+                    <input [ngClass]="{'invalid': submitted && formValue.name.errors}" formControlName="name"
+                        placeholder="Name" class="form-control" type="text">
+                    <div *ngIf="submitted && formValue.name.errors" class="input-feedback">
+                        <div *ngIf="formValue.name.errors.required">Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input [ngClass]="{'invalid': submitted && formValue.email.errors}" formControlName="email"
+                        readonly="true" placeholder="Email" class="form-control" type="text">
+                    <div *ngIf="submitted && formValue.email.errors" class="input-feedback">
+                        <div *ngIf="formValue.email.errors.required">Email is required</div>
+                        <div *ngIf="formValue.email.errors.email">Invalid email address</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input [ngClass]="{'invalid': submitted && formValue.mobile.errors}" formControlName="mobile"
+                        placeholder="Mobile number" class="form-control" type="text">
+                    <div *ngIf="submitted && formValue.mobile.errors" class="input-feedback">
+                        <div *ngIf="formValue.mobile.errors.required">Mobile is required</div>
+                    </div>
+                </div>
+                <button class="primary-button" type="submit">Update</button>
+            </form>
+        </div>
+    </div>
 </div>

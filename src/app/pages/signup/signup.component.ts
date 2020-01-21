@@ -28,7 +28,8 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.required],
-      name: ['', Validators.required]
+      name: ['', Validators.required],
+      mobile: ['', Validators.required]
     });
   }
 
@@ -46,7 +47,13 @@ export class SignupComponent implements OnInit {
     }
 
     this.authService.signupNewUser(
-      {uid: '', email: this.formValue.email.value, displayName: this.formValue.name.value, emailVerified: false}, this.formValue.password.value)
+      {
+        uid: '', email: this.formValue.email.value,
+        displayName: this.formValue.name.value,
+        emailVerified: false,
+        mobile: this.formValue.mobile.value,
+        photoUrl: ''},
+      this.formValue.password.value)
       .then(user => {
             this.router.navigate(['dashboard']);
       })

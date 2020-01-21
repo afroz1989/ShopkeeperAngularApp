@@ -16,7 +16,13 @@ export class AuthService {
     this.user.subscribe(user => {
       if (user) {
         this.fireStore.doc<AppUser>(`users/${user.uid}`).valueChanges().subscribe(res => {
-          this.userDetails = { uid: user.uid, email: user.email, displayName: res.displayName, emailVerified: user.emailVerified };
+          this.userDetails = {
+            uid: user.uid,
+            email: user.email,
+            displayName: res.displayName,
+            emailVerified: user.emailVerified,
+            mobile: res.mobile,
+            photoUrl: user.photoURL };
           console.log('User details', this.userDetails);
         });
       } else {
@@ -38,7 +44,9 @@ export class AuthService {
             uid: user.user.uid,
             email: user.user.email || null,
             displayName: user.user.displayName,
-            emailVerified: user.user.emailVerified
+            emailVerified: user.user.emailVerified,
+            mobile: user.user.phoneNumber,
+            photoUrl: user.user.photoURL
           };
           userRef.set(data).then(res => {
             resolve(res);
@@ -73,7 +81,9 @@ export class AuthService {
             uid: user.user.uid,
             email: user.user.email,
             displayName: newUser.displayName,
-            emailVerified: user.user.emailVerified
+            emailVerified: user.user.emailVerified,
+            mobile: newUser.mobile,
+            photoUrl: ''
           };
           userRef.set(data).then(res => {
             resolve(res);

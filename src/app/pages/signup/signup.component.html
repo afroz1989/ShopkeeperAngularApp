@@ -20,6 +20,13 @@
                 </div>
             </div>
             <div class="form-group">
+                <input [ngClass]="{'invalid': submitted && formValue.mobile.errors}" formControlName="mobile"
+                    placeholder="Mobile" type="text" class="form-control" />
+                <div *ngIf="submitted && formValue.mobile.errors" class="input-feedback">
+                    <div *ngIf="formValue.mobile.errors.required">Mobile is required</div>
+                </div>
+            </div>
+            <div class="form-group">
                 <input [ngClass]="{'invalid': submitted && formValue.password.errors}" formControlName="password"
                     placeholder="Password" type="password" class="form-control" />
                 <div *ngIf="submitted && formValue.password.errors" class="input-feedback">

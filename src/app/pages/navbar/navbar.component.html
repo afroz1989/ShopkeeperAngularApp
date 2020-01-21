@@ -13,7 +13,7 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#team">Team</a></li>
-        <li class="drop-down" *ngIf="authService.userDetails"><a href="">{{authService.userDetails.displayName}}</a>
+        <li class="drop-down" *ngIf="authService.userDetails"><a href=""><img height=30 *ngIf="authService.userDetails.photoUrl" [src]="authService.userDetails.photoUrl" class="rounded-circle" alt="Cinque Terre"> {{authService.userDetails.displayName}}</a>
           <ul>
             <li><a routerLink="/profile">My Profile</a></li>
             <!-- <li class="drop-down"><a href="#">Drop Down 2</a>
